@@ -3,13 +3,18 @@ Big-Oh notation
     - good for static analysis of your algorithm regards time complexity
       Q: What is the runtime growth as a function of input size n?
     - open to suggestions/edits
-sources
-    ...
-    https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
-    https://wiki.python.org/moin/TimeComplexity
-    bigoh rules: Data Structures and Algorithms: Aho, Alfred, Ullman
+    
+    caveats
+        cpython, 
+        wc:= worst case
 
-```
+    sources
+        ...
+        https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+        https://wiki.python.org/moin/TimeComplexity
+        bigoh rules: Data Structures and Algorithms: Aho, Alfred, Ullman
+
+
 |  method                                                                   | builtin types    |               |            |                 |
 |---------------------------------------------------------------------|-----------|---------------|------------|-----------------|
 | name                                                                | set       | dict          | list       | deque           |
@@ -30,8 +35,7 @@ sources
 | index(v, [i,j])                                                     | -         | -             | O(n)       | O(n)            |
 | count(v)                                                            | -         | -             | O(n)       | O(n)            |
 |                                                                     |           |               |            |                 |
-| delete()                                                            | O(1)?     | O(1)?         | O(n)       | O(n)            |
-| remove(v)                                                           | O(1)?     | -             | O(n)       | O(n)            |
+| remove(v)                                                           | O(1)?     | del: O(1)     | O(n)       | O(n)            |
 | discard(v)                                                          | O(1)?     | -             | -          | -               |
 | pop(...)                                                            | O(1) ...- | O(1) ...k[,d] | O(n) ...i  | O(1) ...-       |
 | popleft()                                                           | -         | -             | -          | O(1)            |
@@ -50,7 +54,8 @@ sources
 | copy()                                                              | O(n)      | O(n)          | O(n)       | O(n)            |
 |                                                                     |           |               |            |                 |
 |                                                                     |           |               |            |                 |
-|                                                                     |           |               |            | wc:= worst case |
+
+
 | ---- SET ONLY --------------------------------------------------    |           |               |            |                 |
 | union(e), |; for inplace see .update()                              |           |               | O(1)       |                 |
 | intersection(), &                                                   |           |               | O(1)       |                 |
@@ -65,13 +70,13 @@ sources
 | issuperset(), >=                                                    |           |               | O(n)       |                 |
 | < proper subset                                                     |           |               | O(n)       |                 |
 | > proper superset                                                   |           |               | O(n)       |                 |
-|                                                                     |           |               |            |                 |
+
 | ---- DICT ONLY --------------------------------------------------   |           |               |            |                 |
 | .keys()                                                             |           |               | O(1)       |                 |
 | .values()                                                           |           |               | O(1)       |                 |
 | .items()                                                            |           |               | O(1)       |                 |
 | .fromkeys()                                                         |           |               | O(n)       |                 |
-|                                                                     |           |               |            |                 |
+
 | ---- Iterators() -------------------------------------------------- |           |               |            |                 |
 | previous(i)                                                         | -         | -             | -          | -               |
 | next(i)                                                             | -         | -             | -          | -               |
@@ -79,3 +84,4 @@ sources
 | end(i)                                                              | -         | -             | -          | -               |
 
   
+```

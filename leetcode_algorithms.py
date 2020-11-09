@@ -291,6 +291,7 @@ class Solution(object):
                         key = frozenset(triple)
                         solution[key] = triple  # overwrite previous permutation ok
         return list(solution.values())
+    
     def twoSum(self, nums, target):
         """leet_twosum.py
         :type nums: List[int]
@@ -356,3 +357,39 @@ class Solution(object):
             if equal and hypo1 == hypo2:
                 return True
         return False
+
+    def subtractProductAndSum(self, n):
+        """leet_productsumdigits.py
+        :type n_: int
+        :rtype: int
+        """
+        n_, r = divmod(n, 10)
+        prod_ = r
+        sum_ = r
+        while n_ > 0:
+            n_, r = divmod(n_, 10)
+            prod_ *= r
+            sum_ += r
+        return prod_ - sum_
+
+
+    def processQueries(self, queries, m):
+        """1409. Queries on a Permutation With Key
+        :type queries: List[int]
+        :type m: int
+        :rtype: List[int]
+        """
+        l = collections.deque(range(1, m + 1))
+        found = []
+        for v in queries:
+            # i = l.index(v)
+            for i in range(m):  # >0
+                if l[i] == v:
+                    break
+            found.append(i)
+            l.rotate(-i)
+            v = l.popleft()
+            l.rotate(i)
+            l.appendleft(v)
+
+        return found        
